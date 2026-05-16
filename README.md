@@ -37,7 +37,63 @@ AI-powered project management system with Microsoft Teams integration, built wit
 - `marked` — markdown rendering for AI timeline output
 - `jsPDF` — client-side PDF generation
 
-## Getting Started
+## Docker (Full Stack)
+
+Run the entire application — PostgreSQL, backend, and frontend — with a single command.
+
+### Prerequisites
+- Docker & Docker Compose
+- A `backend/.env` file (copy from `backend/.env.example` and fill in your values)
+
+### Start everything
+
+```bash
+docker compose up --build -d
+```
+
+| Service | Container | External Port |
+|---|---|---|
+| PostgreSQL 15 | `ai-project-management-db` | `9800` |
+| Backend (Node.js) | `ai-project-management-backend` | `9801` |
+| Frontend (nginx) | `ai-project-management-frontend` | `80` |
+
+App is available at **http://localhost**. The frontend proxies `/api/` and `/socket.io/` to the backend automatically.
+
+### Useful commands
+
+```bash
+# View logs
+docker compose logs -f
+
+# Rebuild only the frontend (e.g. after UI changes)
+docker compose up --build frontend -d
+
+# Rebuild only the backend
+docker compose up --build backend -d
+
+# Stop all services
+docker compose down
+
+# Stop and remove volumes (wipes the database)
+docker compose down -v
+```
+
+### Environment & build args
+
+Backend environment is read from `backend/.env` at runtime.  
+Frontend variables are baked in at build time via `docker-compose.yml` build args:
+
+| Build arg | Default in compose | Purpose |
+|---|---|---|
+| `VITE_ENABLE_LOCAL_AUTH` | `"true"` | Show email/password login form |
+| `VITE_API_BASE_URL` | `"http://localhost"` | Base URL for WebSocket connection |
+| `VITE_API_URL` | `"http://localhost/api"` | Base URL for REST API calls |
+
+To change them, edit the `build.args` section of the `frontend` service in `docker-compose.yml` and rebuild the frontend container.
+
+---
+
+## Getting Started (Local Development)
 
 ### Prerequisites
 - Node.js v18+
