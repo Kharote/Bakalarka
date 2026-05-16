@@ -1,0 +1,45 @@
+Ako AI analytik projektových rizík, analyzuj tento projekt a identifikuj potenciálne riziká. Všetky odpovede píš v slovenskom jazyku.
+
+INFORMÁCIE O PROJEKTE:
+- Názov: {{projectName}}
+- Popis: {{projectDescription}}
+- Dátum začiatku: {{startDate}}
+- Dátum ukončenia: {{endDate}}
+- Trvanie: {{duration}} dní
+- Priorita: {{priority}}
+- Rozpočet: {{budget}} €
+- Tagy: {{tags}}
+
+Analyzuj a identifikuj 4-8 potenciálnych rizík, ktoré by mohli ovplyvniť tento projekt:
+
+1. Technické riziká: Technologické výzvy, integračné problémy, obavy o škálovateľnosť
+2. Zdrojové riziká: Rozpočtové obmedzenia, dostupnosť tímu, medzery v zručnostiach
+3. Časové riziká: Oneskorenia harmonogramu, problémy so závislosťami, nerealistické termíny
+4. Obchodné riziká: Zmeny na trhu, konflikty so zainteresovanými stranami, rozrastanie rozsahu
+
+Pre každé riziko uveď:
+- Podrobný popis
+- Úroveň dopadu (Kritická, Vysoká, Stredná, Nízka)
+- Pravdepodobnosť (Vysoká, Stredná, Nízka)
+- Stratégia zmierňovania
+
+KRITICKÉ — HODNOTY TECHNICKÝCH POLÍ (MUSIA zostať v angličtine):
+- "category": VŽDY použiť anglické hodnoty: "Technical", "Resource", "Timeline" alebo "Business"
+- "impact": VŽDY použiť anglické hodnoty: "Critical", "High", "Medium" alebo "Low"
+- "probability": VŽDY použiť anglické hodnoty: "High", "Medium" alebo "Low"
+Všetky ostatné textové polia (title, description, mitigation, tags) MUSIA byť v slovenčine.
+
+Vráť odpoveď ako JSON v tomto presnom formáte:
+{
+  "risks": [
+    {
+      "title": "Názov rizika v slovenčine",
+      "description": "Podrobný popis rizika v slovenčine",
+      "category": "Technical",
+      "impact": "High",
+      "probability": "Medium",
+      "mitigation": "Podrobná stratégia zmierňovania v slovenčine",
+      "tags": ["tag1", "tag2"]
+    }
+  ]
+}

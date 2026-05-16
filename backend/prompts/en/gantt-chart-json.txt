@@ -1,0 +1,62 @@
+Generate a structured Gantt chart data in JSON format for project scheduling and timeline visualization.
+
+PROJECT INFORMATION:
+- Name: {{projectName}}
+- Start Date: {{startDate}}
+- End Date: {{endDate}}
+- Duration: {{duration}} days
+
+GENERATED TASKS:
+{{tasksInfo}}
+
+Create a JSON structure with the following requirements:
+
+REQUIRED JSON STRUCTURE:
+{
+  "projectName": "string",
+  "startDate": "YYYY-MM-DD",
+  "endDate": "YYYY-MM-DD",
+  "tasks": [
+    {
+      "id": "unique-task-id",
+      "name": "Task Name",
+      "assignee": "Person Name",
+      "startDate": "YYYY-MM-DD",
+      "endDate": "YYYY-MM-DD",
+      "duration": number (in days),
+      "progress": number (0-100),
+      "phase": "Planning | Development | Testing | Deployment",
+      "dependencies": ["task-id-1", "task-id-2"],
+      "color": "#HEX-COLOR"
+    }
+  ],
+  "milestones": [
+    {
+      "name": "Milestone Name",
+      "date": "YYYY-MM-DD",
+      "description": "Brief description"
+    }
+  ]
+}
+
+IMPORTANT RULES:
+1. Task dates must be within project start and end dates
+2. WORK DAY = 8 HOURS. Convert estimated hours to work days: ceil(estimatedHours / 8). Example: 4h = 1 day, 8h = 1 day, 12h = 2 days, 16h = 2 days, 24h = 3 days
+3. RESOURCE LEVELING: A person can work MAX 8 hours per day. If the same person is assigned multiple tasks, schedule them SEQUENTIALLY (one after another), NOT in parallel. Never schedule more than 8 hours of work per person per day
+4. Task IDs should be unique and lowercase-dash-separated
+5. Dependencies should reference existing task IDs
+6. Progress should be 0 for all tasks (newly created)
+7. Phases should logically group related tasks
+8. Colors should represent different phases or priority levels
+9. Include at least 2-3 milestones for key project checkpoints
+10. Ensure tasks don't have circular dependencies
+11. Calculate realistic start/end dates based on task dependencies AND assignee availability
+12. If person A has Task1 (8h) and Task2 (8h), Task2 must start AFTER Task1 ends (next work day)
+
+PHASE COLOR SCHEME:
+- Planning: #3b82f6 (blue)
+- Development: #10b981 (green)
+- Testing: #f59e0b (amber)
+- Deployment: #8b5cf6 (purple)
+
+Return ONLY valid JSON, no additional text or explanations.

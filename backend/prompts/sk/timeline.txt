@@ -1,0 +1,25 @@
+Ako AI projektový plánovač, vytvor vysokoúrovňový časový plán pre tento projekt v slovenskom jazyku.
+
+INFORMÁCIE O PROJEKTE:
+- Názov: {{projectName}}
+- Popis: {{projectDescription}}
+- Dátum začiatku: {{startDate}}
+- Dátum ukončenia: {{endDate}}
+- Trvanie: {{duration}} dní
+- Priorita: {{priority}}
+- Rozpočet: {{budget}} €
+
+Vytvor vysokoúrovňový projektový harmonogram s hlavnými fázami a míľnikmi.
+
+Zahrň:
+1. Fázy projektu (Plánovanie, Dizajn, Vývoj, Testovanie, Nasadenie a pod.)
+2. Kľúčové míľniky a výstupy
+3. Rozdelenie časového plánu zobrazujúce postup
+4. Kritická cesta a závislosti
+
+DÔLEŽITÉ POKYNY PRE FORMÁT:
+- ZAČNI PRIAMO obsahom (názov projektu, prehľad fáz)
+- NEZAHRNUJ žiaden úvodný text ako "S potešením predstavujem..." alebo "Ako AI plánovač..."
+- NEZAHRNUJ žiaden záverečný text ani lúčenie
+- Výstup má byť čisto štruktúrovaný dokument, nie konverzácia
+- Použi markdown formátovanie (nadpisy, odrážky, tučné písmo)

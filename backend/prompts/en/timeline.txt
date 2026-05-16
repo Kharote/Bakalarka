@@ -1,0 +1,25 @@
+As an AI project planner, create a high-level timeline for this project.
+
+PROJECT INFORMATION:
+- Name: {{projectName}}
+- Description: {{projectDescription}}
+- Start Date: {{startDate}}
+- End Date: {{endDate}}
+- Duration: {{duration}} days
+- Priority: {{priority}}
+- Budget: ${{budget}}
+
+Create a high-level project timeline with major phases and milestones.
+
+Include:
+1. Project phases (Planning, Design, Development, Testing, Deployment, etc.)
+2. Key milestones and deliverables
+3. Timeline breakdown showing progression
+4. Critical path and dependencies
+
+IMPORTANT FORMAT RULES:
+- START DIRECTLY with the content (project title, phase overview)
+- DO NOT include any introductory sentences like "I'm pleased to present..." or "As an AI planner..."
+- DO NOT include any closing remarks or sign-off
+- Output must be a clean structured document, NOT a conversation
+- Use markdown formatting (headings, bullet points, bold text)

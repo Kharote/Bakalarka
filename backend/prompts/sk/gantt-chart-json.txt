@@ -1,0 +1,62 @@
+Vygeneruj štruktúrované dáta Ganttovho diagramu v JSON formáte pre plánovanie projektu a vizualizáciu časovej osi.
+
+INFORMÁCIE O PROJEKTE:
+- Názov: {{projectName}}
+- Dátum začiatku: {{startDate}}
+- Dátum ukončenia: {{endDate}}
+- Trvanie: {{duration}} dní
+
+VYGENEROVANÉ ÚLOHY:
+{{tasksInfo}}
+
+Vytvor JSON štruktúru s nasledujúcimi požiadavkami:
+
+POŽADOVANÁ JSON ŠTRUKTÚRA:
+{
+  "projectName": "string",
+  "startDate": "RRRR-MM-DD",
+  "endDate": "RRRR-MM-DD",
+  "tasks": [
+    {
+      "id": "jedinecne-id-ulohy",
+      "name": "Názov úlohy",
+      "assignee": "Meno osoby",
+      "startDate": "RRRR-MM-DD",
+      "endDate": "RRRR-MM-DD",
+      "duration": number (v dňoch),
+      "progress": number (0-100),
+      "phase": "Planning | Development | Testing | Deployment",
+      "dependencies": ["id-ulohy-1", "id-ulohy-2"],
+      "color": "#HEX-FARBA"
+    }
+  ],
+  "milestones": [
+    {
+      "name": "Názov míľnika",
+      "date": "RRRR-MM-DD",
+      "description": "Stručný popis"
+    }
+  ]
+}
+
+DÔLEŽITÉ PRAVIDLÁ:
+1. Dátumy úloh musia byť v rámci dátumu začiatku a ukončenia projektu
+2. PRACOVNÝ DEŇ = 8 HODÍN. Prepočítaj odhadované hodiny na pracovné dni: ceil(estimatedHours / 8). Príklad: 4h = 1 deň, 8h = 1 deň, 12h = 2 dni, 16h = 2 dni, 24h = 3 dni
+3. ROZLOŽENIE ZDROJOV: Osoba môže pracovať MAX 8 hodín denne. Ak je tá istá osoba priradená k viacerým úlohám, naplánuj ich SEKVENČNE (jednu za druhou), NIE paralelne. Nikdy neplánuj viac ako 8 hodín práce na osobu za deň
+4. ID úloh by mali byť jedinečné a oddelené pomlčkami malými písmenami
+5. Závislosti by mali odkazovať na existujúce ID úloh
+6. Progress by mal byť 0 pre všetky úlohy (novo vytvorené)
+7. Fázy by mali logicky zoskupovať príbuzné úlohy
+8. Farby by mali reprezentovať rôzne fázy alebo úrovne priority
+9. Zahrnúť aspoň 2-3 míľniky pre kľúčové kontrolné body projektu
+10. Zabezpečiť, aby úlohy nemali cyklické závislosti
+11. Vypočítať realistické dátumy začiatku/ukončenia na základe závislostí úloh A dostupnosti priradenej osoby
+12. Ak osoba A má Úlohu1 (8h) a Úlohu2 (8h), Úloha2 musí začať AŽ PO ukončení Úlohy1 (ďalší pracovný deň)
+
+FAREBNÁ SCHÉMA FÁZ:
+- Planning: #3b82f6 (modrá)
+- Development: #10b981 (zelená)
+- Testing: #f59e0b (jantárová)
+- Deployment: #8b5cf6 (fialová)
+
+Vráť IBA platný JSON, žiadny dodatočný text alebo vysvetlenia.

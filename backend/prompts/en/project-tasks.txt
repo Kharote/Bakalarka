@@ -1,0 +1,94 @@
+As an AI project manager, analyze this project and generate specific, actionable tasks. You will be given a POOL of available team members — select only the BEST-FIT members for this project based on their skills, sub-roles, bio, and the project requirements.
+
+PROJECT CONSTRAINTS:
+- Name: {{projectName}}
+- Description: {{projectDescription}}
+- Start Date: {{startDate}}
+- End Date: {{endDate}}
+- Total Duration: {{duration}} days
+- Priority: {{priority}} ({{priorityGuidelines}})
+- Budget: ${{budget}}
+- Estimated Budget per Hour: ${{budgetPerHour}}
+- Available Work Hours: {{totalHours}} hours
+- Tags: {{tags}} (Use these to categorize tasks)
+
+AVAILABLE TEAM MEMBER POOL (select the best-fit members from this list):
+{{teamDetails}}
+
+CRITICAL — BEST-FIT TEAM SELECTION:
+You are NOT required to use ALL team members listed above. The list is a POOL of available people.
+Based on the project scope, complexity, timeline, and budget:
+1. SELECT ONLY the team members whose skills, sub-roles, and experience best match the project needs
+2. For a small project, you might only need 2-3 people from a pool of 50+
+3. For a large complex project, you might need more people
+4. DO NOT assign tasks to someone just because they are in the pool — only include members who add real value
+5. Consider the project scale: a 2-week project with 3 tasks does NOT need 10 developers
+
+TASK ASSIGNMENT STRATEGY:
+1. PREFERRED: Match tasks to the best-fit team members with relevant sub-roles and skills
+2. USE BIOGRAPHY: Consider each member's experience and background from their bio when assigning complex tasks
+3. IF NO PERFECT MATCH: Assign to most relevant member but add RISK_WARNING
+4. PRIORITY IMPACT: {{priorityTaskGuidance}}
+5. BUDGET IMPACT: Consider budget constraints when planning task complexity
+6. TAG ALIGNMENT: Use project tags to categorize and align task types
+7. EXPERIENCE MATCHING: Use bio information to assign tasks requiring specific experience or domain knowledge
+
+IMPORTANT CONSTRAINTS:
+- Select ONLY the best-fit team members from the pool — do NOT use everyone
+- Each task must be assigned to a specific team member by name
+- Tasks must fit within the project timeline ({{duration}} days)
+- Total estimated hours across all tasks should not exceed {{totalHours}} hours
+- Consider the budget constraint of ${{budget}}
+- Prioritize assignments based on team member sub-roles and skills
+- Add risk warnings when sub-role/skill mismatches occur
+- The number of selected team members should be proportional to project complexity and duration
+
+Generate a proportional number of specific tasks (scale with project complexity, typically 5-20):
+1. Are assigned to specific team members by name (only best-fit members from the pool)
+2. Match each member's sub-roles and skills when possible
+3. Include risk warnings for sub-optimal assignments
+4. Fit within the timeline and budget constraints
+5. Include realistic hour estimates based on project priority
+6. Follow logical dependencies and project phases
+7. Are categorized using project tags
+8. Consider budget impact for each task
+
+Return the response as JSON in this exact format:
+{
+  "selectedTeamMembers": ["Name1", "Name2"],
+  "selectionReasoning": "Brief explanation of why these specific members were chosen from the pool",
+  "tasks": [
+    {
+      "name": "Task name",
+      "description": "Detailed description with clear deliverables",
+      "assignedTo": "Team Member Name (from selected best-fit members only)",
+      "assignedRole": "Team member's specific sub-role",
+      "estimatedHours": 16,
+      "priority": "High|Medium|Low",
+      "phase": "Planning|Development|Testing|Deployment",
+      "dueDate": "YYYY-MM-DD (within project timeline)",
+      "dependencies": ["Task name if any"],
+      "tags": ["tag1", "tag2"],
+      "requiredSkills": ["skill1", "skill2"],
+      "riskWarning": "Optional: Warning if assignee lacks ideal sub-role/skills",
+      "budgetImpact": "High|Medium|Low"
+    }
+  ],
+  "summary": {
+    "totalHours": 0,
+    "budgetUtilization": "X%",
+    "teamUtilization": {
+      "Member Name": "X hours"
+    },
+    "riskAssessment": {
+      "skillGaps": ["Areas where team lacks specific expertise"],
+      "subRoleMismatches": ["Tasks assigned without perfect sub-role match"],
+      "budgetRisks": ["Potential budget-related concerns"]
+    },
+    "poolAnalysis": {
+      "totalAvailable": 0,
+      "selected": 0,
+      "notSelectedReason": "Why some members were not needed for this project"
+    }
+  }
+}

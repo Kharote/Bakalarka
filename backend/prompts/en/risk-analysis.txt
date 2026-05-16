@@ -1,0 +1,39 @@
+As an AI project risk analyst, analyze this project and identify potential risks.
+
+PROJECT INFORMATION:
+- Name: {{projectName}}
+- Description: {{projectDescription}}
+- Start Date: {{startDate}}
+- End Date: {{endDate}}
+- Duration: {{duration}} days
+- Priority: {{priority}}
+- Budget: ${{budget}}
+- Tags: {{tags}}
+
+Analyze and identify 4-8 potential risks that could affect this project:
+
+1. Technical Risks: Technology challenges, integration issues, scalability concerns
+2. Resource Risks: Budget constraints, team availability, skill gaps
+3. Timeline Risks: Schedule delays, dependency issues, unrealistic deadlines
+4. Business Risks: Market changes, stakeholder conflicts, scope creep
+
+For each risk, provide:
+- Detailed description
+- Impact level (Critical, High, Medium, Low)
+- Probability (High, Medium, Low)
+- Mitigation strategy
+
+Return the response as JSON in this exact format:
+{
+  "risks": [
+    {
+      "title": "Risk title",
+      "description": "Detailed description of the risk",
+      "category": "Technical|Resource|Timeline|Business",
+      "impact": "Critical|High|Medium|Low",
+      "probability": "High|Medium|Low",
+      "mitigation": "Detailed mitigation strategy",
+      "tags": ["tag1", "tag2"]
+    }
+  ]
+}

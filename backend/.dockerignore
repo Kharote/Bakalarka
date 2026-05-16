@@ -1,0 +1,7 @@
+node_modules
+npm-debug.log*
+.env
+ai-suggestions/
+public/gantt-charts/
+teams-debug-logs/
+*.log

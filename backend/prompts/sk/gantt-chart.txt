@@ -1,0 +1,67 @@
+Vytvor podrobné textové zobrazenie Ganttovho diagramu pre tento projekt s časovou osou a dátumami.
+
+INFORMÁCIE O PROJEKTE:
+- Názov: {{projectName}}
+- Dátum začiatku: {{startDate}}
+- Dátum ukončenia: {{endDate}}
+- Trvanie: {{duration}} dní
+
+VYGENEROVANÉ ÚLOHY:
+{{tasksInfo}}
+
+Vytvor komplexný vizuálny textový Ganttov diagram s nasledujúcimi požiadavkami:
+
+POŽADOVANÉ PRVKY:
+1. Hlavička časovej osi zobrazujúca týždne/mesiace od začiatku do konca
+2. Každý riadok úlohy zobrazuje:
+   - Názov úlohy (max 30 znakov)
+   - Meno pridelenej osoby
+   - Dátum začiatku a ukončenia
+   - Vizuálny ukazovateľ priebehu zarovnaný k časovej osi
+   - Odhadované hodiny
+3. Použi █ pre stĺpce trvania úlohy
+4. Použi ░ pre prázdne miesta na časovej osi
+5. Zobraz značky dátumov v kľúčových bodoch
+6. Zahrň závislosti úloh, ak existujú
+7. Zoskup úlohy podľa fázy (Planning, Development, Testing, Deployment)
+
+DÔLEŽITÉ PRAVIDLÁ FORMÁTOVANIA:
+- Mierka časovej osi: Zobraz skutočné značky dátumov (napr. "Týždeň 1", "Týždeň 2" alebo skutočné dátumy)
+- Zarovnaj všetky stĺpce úloh k mierke časovej osi
+- Dĺžka každého stĺpca by mala zodpovedať skutočnému trvaniu úlohy
+- Zobraz dátumy začiatku/ukončenia úloh explicitne
+- Zahrň legendu vysvetľujúcu symboly
+
+PRÍKLAD FORMÁTU:
+================================================================================
+PROJEKT: {{projectName}}
+ČASOVÁ OS: {{startDate}} do {{endDate}} ({{duration}} dní)
+================================================================================
+
+MIERKA ČASOVEJ OSI:
+Týždeň:       1    2    3    4    5    6    7    8
+Dátum:     12/30 01/06 01/13 01/20 01/27 02/03 02/10 02/17
+           |----|----|----|----|----|----|----|----|
+
+FÁZA: Planning
+───────────────────────────────────────────────────────────────
+Úloha 1 (Osoba A)              [12/30-01/05] 40h
+           ███░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+Úloha 2 (Osoba B)              [01/02-01/10] 32h
+           ░░███░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+FÁZA: Development
+───────────────────────────────────────────────────────────────
+Úloha 3 (Osoba C)              [01/08-02/05] 80h
+           ░░░░░████████████░░░░░░░░░░░░░░░░░░
+
+LEGENDA:
+█ = Aktívne pracovné obdobie
+░ = Žiadna naplánovaná práca
+───────────────────────────────────────────────────────────────
+
+KRITICKÉ — HODNOTY TECHNICKÝCH POLÍ MUSIA zostať v angličtine:
+- Fázy (phase): "Planning", "Development", "Testing", "Deployment"
+
+Vygeneruj podrobný Ganttov diagram podľa tohto formátu so VŠETKÝMI úlohami, zobrazujúci skutočné dátumy, trvanie a jasné zarovnanie časovej osi.

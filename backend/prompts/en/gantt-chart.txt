@@ -1,0 +1,64 @@
+Create a detailed text-based Gantt chart representation for this project with timeline and dates.
+
+PROJECT INFORMATION:
+- Name: {{projectName}}
+- Start Date: {{startDate}}
+- End Date: {{endDate}}
+- Duration: {{duration}} days
+
+GENERATED TASKS:
+{{tasksInfo}}
+
+Create a comprehensive visual text-based Gantt chart with the following requirements:
+
+REQUIRED ELEMENTS:
+1. Timeline header showing weeks/months from start to end date
+2. Each task row showing:
+   - Task name (max 30 chars)
+   - Assignee name
+   - Start date and end date
+   - Visual progress bar aligned to timeline
+   - Estimated hours
+3. Use █ for task duration bars
+4. Use ░ for empty timeline spaces
+5. Show date markers at key points
+6. Include task dependencies if any
+7. Group tasks by phase (Planning, Development, Testing, Deployment)
+
+IMPORTANT FORMATTING RULES:
+- Timeline scale: Show actual date markers (e.g., "Week 1", "Week 2", or actual dates)
+- Align all task bars to the timeline scale
+- Each task bar length should reflect actual task duration
+- Show task start/end dates explicitly
+- Include a legend explaining the symbols
+
+FORMAT EXAMPLE:
+================================================================================
+PROJECT: {{projectName}}
+TIMELINE: {{startDate}} to {{endDate}} ({{duration}} days)
+================================================================================
+
+TIMELINE SCALE:
+Week:         1    2    3    4    5    6    7    8
+Date:      12/30 01/06 01/13 01/20 01/27 02/03 02/10 02/17
+           |----|----|----|----|----|----|----|----|
+
+PHASE: Planning
+───────────────────────────────────────────────────────────────
+Task 1 Name (User A)           [12/30-01/05] 40h
+           ███░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+Task 2 Name (User B)           [01/02-01/10] 32h
+           ░░███░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+PHASE: Development
+───────────────────────────────────────────────────────────────
+Task 3 Name (User C)           [01/08-02/05] 80h
+           ░░░░░████████████░░░░░░░░░░░░░░░░░░
+
+LEGEND:
+█ = Active work period
+░ = No work scheduled
+───────────────────────────────────────────────────────────────
+
+Generate a detailed Gantt chart following this format with ALL tasks, showing actual dates, durations, and clear timeline alignment.

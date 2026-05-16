@@ -1,0 +1,55 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: ai-project-management-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+      POSTGRES_DB: ai_project_management
+    ports:
+      - "9800:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    container_name: ai-project-management-backend
+    restart: always
+    env_file: ./backend/.env
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      FRONTEND_URL: http://localhost
+    ports:
+      - "9801:9801"
+    volumes:
+      - gantt_charts:/app/public/gantt-charts
+      - ai_suggestions:/app/ai-suggestions
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_ENABLE_LOCAL_AUTH: "true"
+        VITE_API_BASE_URL: "http://localhost"
+        VITE_API_URL: "http://localhost/api"
+    container_name: ai-project-management-frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  gantt_charts:
+  ai_suggestions:

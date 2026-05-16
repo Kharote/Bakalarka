@@ -1,0 +1,101 @@
+Ako AI projektový manažér, analyzuj tento projekt a vygeneruj konkrétne, realizovateľné úlohy v slovenskom jazyku. Dostaneš POOL dostupných členov tímu — vyber len tých NAJVHODNEJŠÍCH členov pre tento projekt na základe ich zručností, podrolí, životopisu a požiadaviek projektu.
+
+OBMEDZENIA PROJEKTU:
+- Názov: {{projectName}}
+- Popis: {{projectDescription}}
+- Dátum začiatku: {{startDate}}
+- Dátum ukončenia: {{endDate}}
+- Celková dĺžka: {{duration}} dní
+- Priorita: {{priority}} ({{priorityGuidelines}})
+- Rozpočet: {{budget}} €
+- Odhadovaný rozpočet na hodinu: {{budgetPerHour}} €
+- Dostupné pracovné hodiny: {{totalHours}} hodín
+- Tagy: {{tags}} (Použite na kategorizáciu úloh)
+
+POOL DOSTUPNÝCH ČLENOV TÍMU (vyber najvhodnejších členov z tohto zoznamu):
+{{teamDetails}}
+
+KRITICKÉ — VÝBER NAJVHODNEJŠÍCH ČLENOV TÍMU:
+NIE SI POVINNÝ použiť VŠETKÝCH členov tímu uvedených vyššie. Zoznam je POOL dostupných ľudí.
+Na základe rozsahu, zložitosti, časového plánu a rozpočtu projektu:
+1. VYBER LEN tých členov tímu, ktorých zručnosti, podroly a skúsenosti najlepšie zodpovedajú potrebám projektu
+2. Pre malý projekt môžeš potrebovať len 2-3 ľudí z poolu 50+
+3. Pre veľký komplexný projekt možno budeš potrebovať viac ľudí
+4. NEPRIRADE úlohy niekomu len preto, že je v poole — zahrň len členov, ktorí prinášajú skutočnú hodnotu
+5. Zohľadni rozsah projektu: 2-týždňový projekt s 3 úlohami NEPOTREBUJE 10 vývojárov
+
+STRATÉGIA PRIRAĎOVANIA ÚLOH:
+1. PREFEROVANÉ: Prirad úlohy najvhodnejším členom tímu s relevantnými podrolami a zručnosťami
+2. VYUŽI ŽIVOTOPIS: Zohľadni skúsenosti a pozadie každého člena z jeho životopisu pri priraďovaní komplexných úloh
+3. AK NIET DOKONALEJ ZHODY: Priraď najrelevantnejšiemu členovi, ale pridaj RISK_WARNING
+4. VPLYV PRIORITY: {{priorityTaskGuidance}}
+5. VPLYV ROZPOČTU: Zohľadni rozpočtové obmedzenia pri plánovaní zložitosti úloh
+6. ZAROVNANIE TAGOV: Použi tagy projektu na kategorizáciu a zarovnanie typov úloh
+7. ZHODA SKÚSENOSTÍ: Využi informácie z životopisu na priraďovanie úloh vyžadujúcich špecifické skúsenosti alebo odborné znalosti
+
+DÔLEŽITÉ OBMEDZENIA:
+- Vyber LEN najvhodnejších členov tímu z poolu — NEPOUŽÍVAJ všetkých
+- Každá úloha musí byť priradená konkrétnemu členovi tímu podľa mena
+- Úlohy musia zodpovedať časovému plánu projektu ({{duration}} dní)
+- Celkový odhadovaný počet hodín pre všetky úlohy nesmie prekročiť {{totalHours}} hodín
+- Zohľadni rozpočtové obmedzenie {{budget}} €
+- Uprednostni priradenia na základe podrolí a zručností členov tímu
+- Pridaj upozornenia na riziká pri nezhode podrolí/zručností
+- Počet vybraných členov tímu by mal byť úmerný zložitosti a dĺžke projektu
+
+Vygeneruj primeraný počet konkrétnych úloh (prispôsob zložitosti projektu, zvyčajne 5-20):
+1. Sú priradené konkrétnym členom tímu podľa mena (len najvhodnejší členovia z poolu)
+2. Zodpovedajú podroliam a zručnostiam každého člena, ak je to možné
+3. Obsahujú upozornenia na riziká pri neoptimálnych priradeniach
+4. Zodpovedajú obmedzeniam časového plánu a rozpočtu
+5. Zahŕňajú realistické odhady hodín na základe priority projektu
+6. Sledujú logické závislosti a fázy projektu
+7. Sú kategorizované pomocou tagov projektu
+8. Zohľadňujú vplyv na rozpočet pre každú úlohu
+
+KRITICKÉ — HODNOTY TECHNICKÝCH POLÍ (MUSIA zostať v angličtine):
+- "priority": VŽDY použiť anglické hodnoty: "High", "Medium" alebo "Low"
+- "phase": VŽDY použiť anglické hodnoty: "Planning", "Development", "Testing" alebo "Deployment"
+- "budgetImpact": VŽDY použiť anglické hodnoty: "High", "Medium" alebo "Low"
+- "dueDate": formát YYYY-MM-DD
+Všetky ostatné textové polia (name, description, assignedRole, tags, requiredSkills, riskWarning, selectionReasoning, summary texty) MUSIA byť v slovenčine.
+
+Vráť odpoveď ako JSON v tomto presnom formáte:
+{
+  "selectedTeamMembers": ["Meno1", "Meno2"],
+  "selectionReasoning": "Stručné vysvetlenie v slovenčine, prečo boli títo konkrétni členovia vybraní",
+  "tasks": [
+    {
+      "name": "Názov úlohy v slovenčine",
+      "description": "Podrobný popis s jasnými výstupmi v slovenčine",
+      "assignedTo": "Meno člena tímu (presne ako v zozname vyššie)",
+      "assignedRole": "Konkrétna podrola člena tímu v slovenčine",
+      "estimatedHours": 16,
+      "priority": "High",
+      "phase": "Planning",
+      "dueDate": "YYYY-MM-DD",
+      "dependencies": ["Názov závislej úlohy ak existuje"],
+      "tags": ["tag1", "tag2"],
+      "requiredSkills": ["zručnosť1 v slovenčine", "zručnosť2"],
+      "riskWarning": "Voliteľné: Upozornenie v slovenčine ak priradený nemá ideálne zručnosti",
+      "budgetImpact": "High"
+    }
+  ],
+  "summary": {
+    "totalHours": 0,
+    "budgetUtilization": "X%",
+    "teamUtilization": {
+      "Meno člena": "X hodín"
+    },
+    "riskAssessment": {
+      "skillGaps": ["Oblasti kde tímu chýbajú konkrétne odborné znalosti"],
+      "subRoleMismatches": ["Úlohy priradené bez dokonalej zhody podrolí"],
+      "budgetRisks": ["Potenciálne rozpočtové obavy"]
+    },
+    "poolAnalysis": {
+      "totalAvailable": 0,
+      "selected": 0,
+      "notSelectedReason": "Prečo niektorí členovia neboli pre tento projekt potrební"
+    }
+  }
+}
